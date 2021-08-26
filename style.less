@@ -1,0 +1,785 @@
+@waring: #d20000;
+@bgalphaGray: rgba(10, 10, 10, 0.8);
+@bgalpgaWhite: rgba(255, 255, 255, 0.1); 
+@bgalpgaDark: rgba(0, 0, 0, 0.8);
+@maincolor: #1e2124;
+@border: #777;
+@white: #fff;
+@boxs: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(119 119 119 / 60%);
+
+@btncol: rgb(118 16 16 / 60%);
+@btncolhover: rgb(118 16 16 / 90%);
+@btnboxs: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(118 16 16 / 60%);
+
+@font-face { 
+   font-family: "Font";
+   src: url(fontin-smallcaps-webfont.woff) format("woff");
+}
+
+
+.customScroll {
+   scrollbar-color: @maincolor transparent;
+   scrollbar-width: thin;
+}
+
+.customScroll::-webkit-scrollbar {
+   background: transparent;
+   width: 10px;
+}
+
+.customScroll::-webkit-scrollbar-thumb {
+   min-height: 10%;
+   background-clip: content-box;
+   border-left: 6px solid transparent;
+   background-color: @border;
+   cursor: pointer;
+}
+
+body {
+   background-image: url(bg.jpg);
+   background-size: cover;
+   background-position: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family: Font;
+}
+
+.notice{
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 1rem;
+   margin-bottom: 0.5rem;
+   color: @white;
+   font-size: 0.8rem;
+   text-align: center;
+}
+
+.form-select:focus,.form-control:focus,.btn-primary:focus,.btn-primary:active,.btn-primary:active:focus{
+   border-color: unset;
+   box-shadow: unset;
+}
+
+.chaos {
+   display: block;
+   background-image: url(https://web.poecdn.com/image/Art/2DItems/Currency/CurrencyRerollRare.png);
+   width: 2rem;
+   height: 2rem;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: contain;
+}
+
+.ex {
+   display: block;
+   background-image: url(https://web.poecdn.com/image/Art/2DItems/Currency/CurrencyAddModToRare.png);
+   width: 2rem;
+   height: 2rem;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: contain;
+}
+
+.loading {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding: 1rem;
+   .spinner-border {
+      color: @waring;
+   }
+   .progressLoad{
+      display: block;
+      width: 80%;
+      height: 1.5rem;
+      margin-top: 1rem;
+      position: relative;
+      border-radius: 4px;
+      border: 2px solid @waring;
+      background-color: @bgalpgaDark;
+      i{
+         display: block;
+         position: absolute;
+         height: 100%;
+         top: 0;
+         left: 0;
+         background-color: rgb(255 0 0 / 25%);
+         z-index: 1;
+      }
+      b{
+         display: flex;
+         position: absolute;
+         top: 0;
+         left: 0;
+         z-index: 2;
+         width: 100%;
+         height: 100%;
+         color: #eee;
+         justify-content: center;
+         align-items: center;
+         font-size: 0.8rem;
+      }
+   }
+}
+
+.content {
+   width: 1200px;
+   height: auto;
+   margin-bottom: 1rem;
+
+   .autherr {
+      color: @waring;
+      display: block;
+      text-align: center;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 1rem;
+      border-radius: 4px;
+      background-color: @bgalphaGray;
+      a {
+         color: @waring;
+      }
+   }
+}
+
+.itemhover{
+   position: fixed;
+   width: 350px;
+   z-index: 10;
+   margin-bottom: 1rem;
+   background-color: #111;
+   border-radius:  0 0 4px 4px;
+   box-shadow: @boxs;
+   .name{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      line-height: 1rem;
+      b{
+         width: 100%;
+         text-align: center;
+      }
+      span{
+         width: 100%;
+         text-align: center;
+      }
+      &.normal{
+         background: url(https://web.poecdn.com/image/item/popup/header-normal-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-normal-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-normal-middle.png) top center repeat-x;
+         height: 33px;
+         color: #c8c8c8;
+      }
+      &.magic{
+         background: url(https://web.poecdn.com/image/item/popup/header-magic-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-magic-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-magic-middle.png) top center repeat-x;
+         height: 33px;
+         color: #8888ff;
+      }
+      &.rare{
+         background: url(https://web.poecdn.com/image/item/popup/header-double-rare-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-double-rare-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-double-rare-middle.png) top center repeat-x;
+         height: 53px;
+         color: #ffff77;
+      }
+      &.unique{
+         background: url(https://web.poecdn.com/image/item/popup/header-double-unique-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-double-unique-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-double-unique-middle.png) top center repeat-x;
+         height: 53px;
+         color: #af6025;
+      }
+      &.gem{
+         background: url(https://web.poecdn.com/image/item/popup/header-gem-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-gem-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-gem-middle.png) top center repeat-x;
+         height: 33px;
+         color: #1ba29b;
+      }
+      &.currency{
+         background: url(https://web.poecdn.com/image/item/popup/header-currency-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-currency-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-currency-middle.png) top center repeat-x;
+         height: 33px;
+         color: #aa9e82;
+      }
+   }
+   .infoCh{
+      display: flex;
+      padding:  0.5rem 1rem;
+      line-height: 1rem;
+      text-transform: uppercase;
+      font-size: 12px;
+      justify-content: center;
+      align-items: center;
+      &.red{
+         color: #f00;
+         background-color: rgb(255 0 0 / 15%);
+      }
+      &.blue{
+         color: #114ffd;
+         background-color: rgb(0 0 255/ 15%);
+      }
+      &.green{
+         color: #0f0;
+         background-color: rgb(0 255 0 / 15%);
+      }
+      .price{
+         display: flex;
+         align-items: center;
+         margin-left: 0.25rem;
+         b{
+            font-size: 1.2rem;
+            line-height: 1.3rem;
+            color: #ffff77;
+            height: 1.5rem;
+         }
+         .chaos , .ex{
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-left: 0.25rem;
+         }
+      }
+   }
+   .sect{
+      padding:  0.5rem 1rem;
+
+      border-bottom: 7px solid transparent;
+      border-image: url(https://web.poecdn.com/image/item/popup/seperator-normal.png);
+      border-image-slice: 7;
+      color: #eee;
+      &.red{
+         color: @waring;
+      }
+      span{
+         display: block;
+         font-size: 0.9rem;
+         line-height: 1rem;
+         margin-bottom: 0.7rem;
+         text-align: center;
+      }
+      span:last-child{
+         margin-bottom: unset;
+      }
+   }
+   .sect:last-child{
+      border: none;
+   }
+}
+
+.maincontent {
+   display: flex;
+
+   .stash {
+      padding: 0.5rem;
+      flex-shrink: 0;
+      background-color: @bgalpgaDark;
+      border-radius: 4px;
+      border: 1.5px solid @border;
+      box-shadow: @boxs;
+      .tabs{
+         display: flex;
+         width: 100%;
+         height: 2.25rem;
+         max-width: 650px;
+         overflow: hidden;
+         padding: 0 1.5rem;
+         .tabsbtn{
+            padding: 0 1rem;
+            border: none;
+            border-radius: 4px;
+            margin-right: 0.25rem;
+            opacity: 1;
+            transition: all 0.3s;
+            margin-bottom: 0.25rem;
+            b{
+               display: block;
+               white-space: nowrap;
+               margin-top: -3px;
+            }
+            &.light b{
+               color: @maincolor;
+               text-shadow: 0px 0px 3px @white;
+            }
+            &.dark b{
+               color: @white;
+               text-shadow: 0px 0px 3px @bgalpgaDark;
+            }
+            &:hover{
+               opacity: 0.6;
+               box-shadow: @boxs;
+            }
+            &.active{
+               opacity: 1;
+               border-radius: 4px 4px 0 0;
+               margin-bottom: 0;
+               padding-bottom: 0.25rem;
+            }
+         }
+      }
+      .griditem{
+         position: relative;
+         width: 650px;
+         height: 650px;
+         transition: all 0.3s;
+         border-radius: 4px;
+         overflow: hidden;
+         .lines{
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 1;
+            i{
+               border: 1px solid @border;
+            }
+         }
+         .items{
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            z-index: 2;
+         }
+         &.quad .lines, &.quad .items{
+            grid-template-rows: repeat(24, auto);
+            grid-template-columns: repeat(24, auto);
+         }
+         &.normal .lines, &.normal .items{
+            grid-template-rows: repeat(12, auto);
+            grid-template-columns: repeat(12, auto);
+         }
+
+         .item{
+            position: relative;
+            display: block;
+            cursor: pointer;
+            .itembg{
+               position: absolute;
+               pointer-events: none;
+               width: 100%;
+               height: 100%;
+               z-index: 1;
+               border: 0px solid transparent;
+               transition: all 0.3s;
+               &.red{
+                  background-color: rgb(255 0 0 / 25%);
+               }
+               &.blue{
+                  background-color: rgb(0 0 255/ 25%);
+               }
+               &.green{
+                  background-color: rgb(0 255 0 / 25%);
+               }
+            }
+            &:hover .red{
+               background-color: rgb(255 0 0 / 15%);
+               border: 2px solid rgb(255 0 0 / 85%);
+            }
+            &:hover .blue{
+               background-color: rgb(0 0 255/ 15%);
+               border: 2px solid rgb(17 79 253/ 85%);
+            }
+            &:hover .green{
+               background-color: rgb(0 255 0 / 15%);
+               border: 2px solid rgb(0 255 0 / 85%);
+            }
+            &.hover .red{
+               background-color: rgb(255 0 0 / 35%);
+            }
+            &.hover .blue{
+               background-color: rgb(0 0 255/ 35%);
+            }
+            &.hover .green{
+               background-color: rgb(0 255 0 / 35%);
+            }
+            img.icon{
+               position: absolute;
+               width: 100%;
+               height: 100%;
+               object-fit: contain;
+               z-index: 2;
+            }
+            &.hiden{
+               opacity: 0.2;
+            }
+         }
+      }
+   }
+
+   .prices {
+      margin-left: 1rem;
+      flex-grow: 1;
+
+      .toppanel {
+         display: flex;
+
+         .leagueSelect {
+            margin-right: 1rem;
+            flex-grow: 1;
+            cursor: pointer; 
+            font-weight: bold;
+            background-color: @bgalpgaDark;
+            border-radius: 4px;
+            border: 1.5px solid @border;
+            color: @border;
+         }
+
+         .chAllPrice {
+            width: auto;
+            flex-shrink: 0;
+            background: @bgalpgaDark;
+            border-radius: 4px;
+
+            input {
+               width: 9rem;
+               height: 2.5rem;
+               padding-left: 3rem;
+               padding-right: 2.5rem;
+               text-align: center;
+               font-size: 1.1rem;
+               line-height: 1rem;
+               font-weight: bold;
+               background-color: transparent;
+               border-radius: 4px;
+               border: 1.5px solid @border;
+               color: @border;
+            }
+
+            span {
+               position: absolute;
+               pointer-events: none;
+               z-index: 4;
+               line-height: 2.5rem;
+               margin-left: 0.5rem !important;
+               color: @border;
+            }
+
+            i.chaos , i.ex {
+               position: absolute;
+               top: 5px;
+               left: 6.75rem;
+               pointer-events: none;
+               z-index: 4;
+            }
+
+            .priceCheck {
+               width: auto;
+               border: none;
+               background-color: @btncol;
+               color: @white;
+               border: 1.5px solid @border;
+               &:hover{
+                  background-color: @btncolhover;
+                  border: 1.5px solid @btncolhover;
+                  box-shadow: @btnboxs;
+               }
+            }
+         }
+         .heistMoadlOpen{
+            width: auto;
+            border: none;
+            background-color: rgb(18 118 16 / 60%);
+            color: @white;
+            border: 1.5px solid @border;
+            margin-right: 1rem;
+            &:hover{
+               background-color: rgb(18 118 16 / 100%);
+               border: 1.5px solid rgb(18 118 16 / 100%);
+               box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(18 118 16 / 60%);
+            }
+         }
+      }
+
+      .itemsprices{
+         margin-top: 0.5rem;
+         max-height: 660px;
+         height: fit-content;
+         overflow-y: auto;
+         padding: 0.25rem 0;
+         .itemPrice{
+            display: flex;
+            margin-bottom: 0.5rem;
+            background-color: @bgalpgaDark;
+            border-radius: 4px;
+            border: 1.5px solid @border;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            &::after{
+               content: "";
+               display: block;
+               position: absolute;
+               width: 100%;
+               height: 0.5rem;
+               left: 0;
+               bottom: -0.6rem;
+            }
+            &:last-child{
+               margin-bottom: 0;
+               &::after{
+                  display: none;
+               }
+            }
+            &:hover{
+               box-shadow: @boxs;
+               border: 1.5px solid rgb(0 255 0 / 85%);
+            }
+            img{
+               width: 4rem;
+               height: 4rem;
+               object-fit: contain;
+               padding: 0.25rem;
+            }
+            .namePr{
+               flex-grow: 1;
+               height: 4rem;
+               padding: 0.25rem 0.5rem;
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               border-right: 1px solid @border;
+               b{
+                  display: block;
+                  font-size: 1.2rem;
+                  line-height: 1.5rem;
+                  width: 100%;
+                  color: @white;
+               }
+               span{
+                  display: block;
+                  font-size: 1rem;
+                  line-height: 1.2rem;
+                  width: 100%;
+                  color: #ccc;
+               }
+            }
+            .price{
+               width: fit-content;
+               height: 4rem;
+               display: flex;
+               justify-content: flex-end;
+               align-items: center;
+               padding-right: 0.5rem;
+               padding-left: 1rem;
+               span{
+                  display: block;
+                  font-size: 1.3rem;
+                  color: #ffff77;
+                  height: 2rem;
+               }
+               i{
+                  margin-left: 0.5rem;
+               }
+            }
+         }
+         .itemPriceInfo{
+            display: block;
+            border-radius: 4px;
+            background-color: rgb(255 0 0 / 15%);
+            border: 2px solid rgb(255 0 0 / 85%);
+            color: @waring;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+         }
+      }
+   }
+}
+
+.modal-backdrop.show {
+   opacity: .85;
+}
+
+.btnModalHeistTab{
+   background: transparent;
+   margin-right: 1rem;
+   border: none;
+   border-bottom: 2px solid transparent;
+   color: @white;
+   transition: border 0.3s, color 0.3s;
+   &:hover{
+      color: #ccc;
+      border-bottom: 2px solid rgb(210 0 0 / 50%);
+   }
+   &.active{
+      border-bottom: 2px solid @waring;
+      pointer-events: none;
+   }
+}
+
+.searchMoadl{
+   display: flex;
+   grid-column: 1 / -1;
+   width: 100%;
+   margin-bottom: 1rem;
+
+   .form-control  {
+      height: 2.5rem;
+      padding: 0 1rem;
+      font-size: 1.1rem;
+      line-height: 1rem;
+      font-weight: bold;
+      background-color: @bgalpgaDark;
+      border-radius: 4px;
+      border: 1.5px solid @border;
+      color: @border;
+   }
+
+   .name{
+      margin-right: 1rem;
+   }
+
+   .clear {
+      width: auto;
+      border: none;
+      background-color: @btncol;
+      color: @white;
+      border: 1.5px solid @border;
+      margin-left: 1rem;
+      &:hover{
+         background-color: @btncolhover;
+         border: 1.5px solid @btncolhover;
+         box-shadow: @btnboxs;
+      }
+   }
+
+   .prBlockModal{
+      position: relative;
+      input {
+         width: 9rem;
+         padding-left: 3rem;
+         padding-right: 2.5rem;
+         text-align: center;
+      }
+      span {
+         position: absolute;
+         top: 0;
+         pointer-events: none;
+         z-index: 4;
+         line-height: 2.5rem;
+         margin-left: 0.5rem !important;
+         color: @border;
+      }
+   
+      i.chaos , i.ex {
+         position: absolute;
+         top: 5px;
+         left: 6.75rem;
+         pointer-events: none;
+         z-index: 4;
+      }
+   }
+}
+
+.moadlHeist{
+   .modal-dialog{
+      min-width: 97%;
+   }
+   .modal-content{
+      background-color: @maincolor;
+      color: @white;
+      border: 1.5px solid @border;
+      box-shadow: @boxs;
+      .modal-header{
+         border-bottom: none;
+         .modal-title{
+            display: flex;
+         }
+         .btn-close{
+            filter: invert(1);
+            &:focus {
+               box-shadow: none;
+            }
+         }
+      }
+   }
+   .itemsModal{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      grid-gap: 1rem;
+   }
+   .itemHeistModal{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: @bgalpgaDark;
+      border-radius: 4px;
+      transition: all 0.3s;
+      position: relative;
+      text-decoration: none;
+      &:hover{
+         background-color: @bgalphaGray;
+      }
+      &::after{
+         content: "";
+         display: block;
+         position: absolute;
+         width: 100%;
+         height: 0.5rem;
+         left: 0;
+         bottom: -0.6rem;
+      }
+      &:last-child{
+         margin-bottom: 0;
+         &::after{
+            display: none;
+         }
+      }
+      img{
+         width: 4rem;
+         height: 4rem;
+         object-fit: contain;
+         padding: 0.25rem;
+      }
+      .namePr{
+         width: 100%;
+         height: auto;
+         padding: 0.3rem 0.5rem;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         text-align: center;
+         b{
+            display: block;
+            font-size: 1.1rem;
+            line-height: 1.1rem;
+            margin-bottom: 0.5rem;
+            width: 100%;
+            color: @white;
+            font-family: var(--bs-font-sans-serif);
+            font-weight: 500;
+         }
+         span{
+            display: block;
+            font-size: 0.9rem;
+            line-height: 1.1rem;
+            width: 100%;
+            color: #ccc;
+         }
+      }
+      .price{
+         width: fit-content;
+         height: 4rem;
+         display: flex;
+         justify-content: flex-end;
+         align-items: center;
+         padding-right: 0.5rem;
+         padding-left: 1rem;
+         span{
+            display: block;
+            font-size: 1.3rem;
+            color: #ffff77;
+            height: 2rem;
+         }
+         i{
+            margin-left: 0.5rem;
+         }
+      }
+   }
+}

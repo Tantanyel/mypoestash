@@ -1,0 +1,744 @@
+@font-face {
+  font-family: "Font";
+  src: url(fontin-smallcaps-webfont.woff) format("woff");
+}
+.customScroll {
+  scrollbar-color: #1e2124 transparent;
+  scrollbar-width: thin;
+}
+.customScroll::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+}
+.customScroll::-webkit-scrollbar-thumb {
+  min-height: 10%;
+  background-clip: content-box;
+  border-left: 6px solid transparent;
+  background-color: #777;
+  cursor: pointer;
+}
+body {
+  background-image: url(bg.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Font;
+}
+.notice {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.form-select:focus,
+.form-control:focus,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus {
+  border-color: unset;
+  box-shadow: unset;
+}
+.chaos {
+  display: block;
+  background-image: url(https://web.poecdn.com/image/Art/2DItems/Currency/CurrencyRerollRare.png);
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.ex {
+  display: block;
+  background-image: url(https://web.poecdn.com/image/Art/2DItems/Currency/CurrencyAddModToRare.png);
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.loading .spinner-border {
+  color: #d20000;
+}
+.loading .progressLoad {
+  display: block;
+  width: 80%;
+  height: 1.5rem;
+  margin-top: 1rem;
+  position: relative;
+  border-radius: 4px;
+  border: 2px solid #d20000;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.loading .progressLoad i {
+  display: block;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 0, 0, 0.25);
+  z-index: 1;
+}
+.loading .progressLoad b {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  color: #eee;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+.content {
+  width: 1200px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+.content .autherr {
+  color: #d20000;
+  display: block;
+  text-align: center;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: rgba(10, 10, 10, 0.8);
+}
+.content .autherr a {
+  color: #d20000;
+}
+.itemhover {
+  position: fixed;
+  width: 350px;
+  z-index: 10;
+  margin-bottom: 1rem;
+  background-color: #111;
+  border-radius: 0 0 4px 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(119, 119, 119, 0.6);
+}
+.itemhover .name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  line-height: 1rem;
+}
+.itemhover .name b {
+  width: 100%;
+  text-align: center;
+}
+.itemhover .name span {
+  width: 100%;
+  text-align: center;
+}
+.itemhover .name.normal {
+  background: url(https://web.poecdn.com/image/item/popup/header-normal-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-normal-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-normal-middle.png) top center repeat-x;
+  height: 33px;
+  color: #c8c8c8;
+}
+.itemhover .name.magic {
+  background: url(https://web.poecdn.com/image/item/popup/header-magic-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-magic-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-magic-middle.png) top center repeat-x;
+  height: 33px;
+  color: #8888ff;
+}
+.itemhover .name.rare {
+  background: url(https://web.poecdn.com/image/item/popup/header-double-rare-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-double-rare-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-double-rare-middle.png) top center repeat-x;
+  height: 53px;
+  color: #ffff77;
+}
+.itemhover .name.unique {
+  background: url(https://web.poecdn.com/image/item/popup/header-double-unique-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-double-unique-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-double-unique-middle.png) top center repeat-x;
+  height: 53px;
+  color: #af6025;
+}
+.itemhover .name.gem {
+  background: url(https://web.poecdn.com/image/item/popup/header-gem-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-gem-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-gem-middle.png) top center repeat-x;
+  height: 33px;
+  color: #1ba29b;
+}
+.itemhover .name.currency {
+  background: url(https://web.poecdn.com/image/item/popup/header-currency-left.png) top left no-repeat, url(https://web.poecdn.com/image/item/popup/header-currency-right.png) top right no-repeat, url(https://web.poecdn.com/image/item/popup/header-currency-middle.png) top center repeat-x;
+  height: 33px;
+  color: #aa9e82;
+}
+.itemhover .infoCh {
+  display: flex;
+  padding: 0.5rem 1rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+}
+.itemhover .infoCh.red {
+  color: #f00;
+  background-color: rgba(255, 0, 0, 0.15);
+}
+.itemhover .infoCh.blue {
+  color: #114ffd;
+  background-color: rgba(0, 0, 255, 0.15);
+}
+.itemhover .infoCh.green {
+  color: #0f0;
+  background-color: rgba(0, 255, 0, 0.15);
+}
+.itemhover .infoCh .price {
+  display: flex;
+  align-items: center;
+  margin-left: 0.25rem;
+}
+.itemhover .infoCh .price b {
+  font-size: 1.2rem;
+  line-height: 1.3rem;
+  color: #ffff77;
+  height: 1.5rem;
+}
+.itemhover .infoCh .price .chaos,
+.itemhover .infoCh .price .ex {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.25rem;
+}
+.itemhover .sect {
+  padding: 0.5rem 1rem;
+  border-bottom: 7px solid transparent;
+  border-image: url(https://web.poecdn.com/image/item/popup/seperator-normal.png);
+  border-image-slice: 7;
+  color: #eee;
+}
+.itemhover .sect.red {
+  color: #d20000;
+}
+.itemhover .sect span {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+.itemhover .sect span:last-child {
+  margin-bottom: unset;
+}
+.itemhover .sect:last-child {
+  border: none;
+}
+.maincontent {
+  display: flex;
+}
+.maincontent .stash {
+  padding: 0.5rem;
+  flex-shrink: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  border: 1.5px solid #777;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(119, 119, 119, 0.6);
+}
+.maincontent .stash .tabs {
+  display: flex;
+  width: 100%;
+  height: 2.25rem;
+  max-width: 650px;
+  overflow: hidden;
+  padding: 0 1.5rem;
+}
+.maincontent .stash .tabs .tabsbtn {
+  padding: 0 1rem;
+  border: none;
+  border-radius: 4px;
+  margin-right: 0.25rem;
+  opacity: 1;
+  transition: all 0.3s;
+  margin-bottom: 0.25rem;
+}
+.maincontent .stash .tabs .tabsbtn b {
+  display: block;
+  white-space: nowrap;
+  margin-top: -3px;
+}
+.maincontent .stash .tabs .tabsbtn.light b {
+  color: #1e2124;
+  text-shadow: 0px 0px 3px #fff;
+}
+.maincontent .stash .tabs .tabsbtn.dark b {
+  color: #fff;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
+}
+.maincontent .stash .tabs .tabsbtn:hover {
+  opacity: 0.6;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(119, 119, 119, 0.6);
+}
+.maincontent .stash .tabs .tabsbtn.active {
+  opacity: 1;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 0;
+  padding-bottom: 0.25rem;
+}
+.maincontent .stash .griditem {
+  position: relative;
+  width: 650px;
+  height: 650px;
+  transition: all 0.3s;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.maincontent .stash .griditem .lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+}
+.maincontent .stash .griditem .lines i {
+  border: 1px solid #777;
+}
+.maincontent .stash .griditem .items {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  z-index: 2;
+}
+.maincontent .stash .griditem.quad .lines,
+.maincontent .stash .griditem.quad .items {
+  grid-template-rows: repeat(24, auto);
+  grid-template-columns: repeat(24, auto);
+}
+.maincontent .stash .griditem.normal .lines,
+.maincontent .stash .griditem.normal .items {
+  grid-template-rows: repeat(12, auto);
+  grid-template-columns: repeat(12, auto);
+}
+.maincontent .stash .griditem .item {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.maincontent .stash .griditem .item .itembg {
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border: 0px solid transparent;
+  transition: all 0.3s;
+}
+.maincontent .stash .griditem .item .itembg.red {
+  background-color: rgba(255, 0, 0, 0.25);
+}
+.maincontent .stash .griditem .item .itembg.blue {
+  background-color: rgba(0, 0, 255, 0.25);
+}
+.maincontent .stash .griditem .item .itembg.green {
+  background-color: rgba(0, 255, 0, 0.25);
+}
+.maincontent .stash .griditem .item:hover .red {
+  background-color: rgba(255, 0, 0, 0.15);
+  border: 2px solid rgba(255, 0, 0, 0.85);
+}
+.maincontent .stash .griditem .item:hover .blue {
+  background-color: rgba(0, 0, 255, 0.15);
+  border: 2px solid rgba(17, 79, 253, 0.85);
+}
+.maincontent .stash .griditem .item:hover .green {
+  background-color: rgba(0, 255, 0, 0.15);
+  border: 2px solid rgba(0, 255, 0, 0.85);
+}
+.maincontent .stash .griditem .item.hover .red {
+  background-color: rgba(255, 0, 0, 0.35);
+}
+.maincontent .stash .griditem .item.hover .blue {
+  background-color: rgba(0, 0, 255, 0.35);
+}
+.maincontent .stash .griditem .item.hover .green {
+  background-color: rgba(0, 255, 0, 0.35);
+}
+.maincontent .stash .griditem .item img.icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 2;
+}
+.maincontent .stash .griditem .item.hiden {
+  opacity: 0.2;
+}
+.maincontent .prices {
+  margin-left: 1rem;
+  flex-grow: 1;
+}
+.maincontent .prices .toppanel {
+  display: flex;
+}
+.maincontent .prices .toppanel .leagueSelect {
+  margin-right: 1rem;
+  flex-grow: 1;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  border: 1.5px solid #777;
+  color: #777;
+}
+.maincontent .prices .toppanel .chAllPrice {
+  width: auto;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+}
+.maincontent .prices .toppanel .chAllPrice input {
+  width: 9rem;
+  height: 2.5rem;
+  padding-left: 3rem;
+  padding-right: 2.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1rem;
+  font-weight: bold;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1.5px solid #777;
+  color: #777;
+}
+.maincontent .prices .toppanel .chAllPrice span {
+  position: absolute;
+  pointer-events: none;
+  z-index: 4;
+  line-height: 2.5rem;
+  margin-left: 0.5rem !important;
+  color: #777;
+}
+.maincontent .prices .toppanel .chAllPrice i.chaos,
+.maincontent .prices .toppanel .chAllPrice i.ex {
+  position: absolute;
+  top: 5px;
+  left: 6.75rem;
+  pointer-events: none;
+  z-index: 4;
+}
+.maincontent .prices .toppanel .chAllPrice .priceCheck {
+  width: auto;
+  border: none;
+  background-color: rgba(118, 16, 16, 0.6);
+  color: #fff;
+  border: 1.5px solid #777;
+}
+.maincontent .prices .toppanel .chAllPrice .priceCheck:hover {
+  background-color: rgba(118, 16, 16, 0.9);
+  border: 1.5px solid rgba(118, 16, 16, 0.9);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(118, 16, 16, 0.6);
+}
+.maincontent .prices .toppanel .heistMoadlOpen {
+  width: auto;
+  border: none;
+  background-color: rgba(18, 118, 16, 0.6);
+  color: #fff;
+  border: 1.5px solid #777;
+  margin-right: 1rem;
+}
+.maincontent .prices .toppanel .heistMoadlOpen:hover {
+  background-color: #127610;
+  border: 1.5px solid #127610;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(18, 118, 16, 0.6);
+}
+.maincontent .prices .itemsprices {
+  margin-top: 0.5rem;
+  max-height: 660px;
+  height: fit-content;
+  overflow-y: auto;
+  padding: 0.25rem 0;
+}
+.maincontent .prices .itemsprices .itemPrice {
+  display: flex;
+  margin-bottom: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  border: 1.5px solid #777;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+.maincontent .prices .itemsprices .itemPrice::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 0.5rem;
+  left: 0;
+  bottom: -0.6rem;
+}
+.maincontent .prices .itemsprices .itemPrice:last-child {
+  margin-bottom: 0;
+}
+.maincontent .prices .itemsprices .itemPrice:last-child::after {
+  display: none;
+}
+.maincontent .prices .itemsprices .itemPrice:hover {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(119, 119, 119, 0.6);
+  border: 1.5px solid rgba(0, 255, 0, 0.85);
+}
+.maincontent .prices .itemsprices .itemPrice img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  padding: 0.25rem;
+}
+.maincontent .prices .itemsprices .itemPrice .namePr {
+  flex-grow: 1;
+  height: 4rem;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid #777;
+}
+.maincontent .prices .itemsprices .itemPrice .namePr b {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  width: 100%;
+  color: #fff;
+}
+.maincontent .prices .itemsprices .itemPrice .namePr span {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  width: 100%;
+  color: #ccc;
+}
+.maincontent .prices .itemsprices .itemPrice .price {
+  width: fit-content;
+  height: 4rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 0.5rem;
+  padding-left: 1rem;
+}
+.maincontent .prices .itemsprices .itemPrice .price span {
+  display: block;
+  font-size: 1.3rem;
+  color: #ffff77;
+  height: 2rem;
+}
+.maincontent .prices .itemsprices .itemPrice .price i {
+  margin-left: 0.5rem;
+}
+.maincontent .prices .itemsprices .itemPriceInfo {
+  display: block;
+  border-radius: 4px;
+  background-color: rgba(255, 0, 0, 0.15);
+  border: 2px solid rgba(255, 0, 0, 0.85);
+  color: #d20000;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.modal-backdrop.show {
+  opacity: 0.85;
+}
+.btnModalHeistTab {
+  background: transparent;
+  margin-right: 1rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #fff;
+  transition: border 0.3s, color 0.3s;
+}
+.btnModalHeistTab:hover {
+  color: #ccc;
+  border-bottom: 2px solid rgba(210, 0, 0, 0.5);
+}
+.btnModalHeistTab.active {
+  border-bottom: 2px solid #d20000;
+  pointer-events: none;
+}
+.searchMoadl {
+  display: flex;
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.searchMoadl .form-control {
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 1.1rem;
+  line-height: 1rem;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  border: 1.5px solid #777;
+  color: #777;
+}
+.searchMoadl .name {
+  margin-right: 1rem;
+}
+.searchMoadl .clear {
+  width: auto;
+  border: none;
+  background-color: rgba(118, 16, 16, 0.6);
+  color: #fff;
+  border: 1.5px solid #777;
+  margin-left: 1rem;
+}
+.searchMoadl .clear:hover {
+  background-color: rgba(118, 16, 16, 0.9);
+  border: 1.5px solid rgba(118, 16, 16, 0.9);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(118, 16, 16, 0.6);
+}
+.searchMoadl .prBlockModal {
+  position: relative;
+}
+.searchMoadl .prBlockModal input {
+  width: 9rem;
+  padding-left: 3rem;
+  padding-right: 2.5rem;
+  text-align: center;
+}
+.searchMoadl .prBlockModal span {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  z-index: 4;
+  line-height: 2.5rem;
+  margin-left: 0.5rem !important;
+  color: #777;
+}
+.searchMoadl .prBlockModal i.chaos,
+.searchMoadl .prBlockModal i.ex {
+  position: absolute;
+  top: 5px;
+  left: 6.75rem;
+  pointer-events: none;
+  z-index: 4;
+}
+.moadlHeist .modal-dialog {
+  min-width: 97%;
+}
+.moadlHeist .modal-content {
+  background-color: #1e2124;
+  color: #fff;
+  border: 1.5px solid #777;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(119, 119, 119, 0.6);
+}
+.moadlHeist .modal-content .modal-header {
+  border-bottom: none;
+}
+.moadlHeist .modal-content .modal-header .modal-title {
+  display: flex;
+}
+.moadlHeist .modal-content .modal-header .btn-close {
+  filter: invert(1);
+}
+.moadlHeist .modal-content .modal-header .btn-close:focus {
+  box-shadow: none;
+}
+.moadlHeist .itemsModal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 1rem;
+}
+.moadlHeist .itemHeistModal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  transition: all 0.3s;
+  position: relative;
+  text-decoration: none;
+}
+.moadlHeist .itemHeistModal:hover {
+  background-color: rgba(10, 10, 10, 0.8);
+}
+.moadlHeist .itemHeistModal::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 0.5rem;
+  left: 0;
+  bottom: -0.6rem;
+}
+.moadlHeist .itemHeistModal:last-child {
+  margin-bottom: 0;
+}
+.moadlHeist .itemHeistModal:last-child::after {
+  display: none;
+}
+.moadlHeist .itemHeistModal img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  padding: 0.25rem;
+}
+.moadlHeist .itemHeistModal .namePr {
+  width: 100%;
+  height: auto;
+  padding: 0.3rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.moadlHeist .itemHeistModal .namePr b {
+  display: block;
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  color: #fff;
+  font-family: var(--bs-font-sans-serif);
+  font-weight: 500;
+}
+.moadlHeist .itemHeistModal .namePr span {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.1rem;
+  width: 100%;
+  color: #ccc;
+}
+.moadlHeist .itemHeistModal .price {
+  width: fit-content;
+  height: 4rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 0.5rem;
+  padding-left: 1rem;
+}
+.moadlHeist .itemHeistModal .price span {
+  display: block;
+  font-size: 1.3rem;
+  color: #ffff77;
+  height: 2rem;
+}
+.moadlHeist .itemHeistModal .price i {
+  margin-left: 0.5rem;
+}
