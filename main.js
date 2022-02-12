@@ -59,7 +59,6 @@ $(document).ready(function () {
 });
 
 function getProfile() {
-   console.log(1);
    $.ajax({
       url: "/data.php?profile=1",
       method: "GET",
